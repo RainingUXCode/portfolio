@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Desenvolvedora</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+            lexend: ['Lexend', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              background: 'rgb(254, 254, 254)',
+              pink: 'rgb(255, 179, 209)',
+              purple: 'rgb(209, 179, 255)',
+              blue: 'rgb(179, 229, 255)',
+              green: 'rgb(179, 255, 214)',
+            },
+            text: {
+              primary: 'rgb(42, 42, 62)',
+              secondary: 'rgb(108, 117, 125)',
+            },
+            dark: {
+              bg: '#101021',
+              card: '#232334',
+              text: {
+                primary: '#f1f3f4',
+                secondary: '#a9a9a9',
+              }
+            }
+          },
+          boxShadow: {
+            'sm': '0 1px 2px 0 rgba(0, 0, 0, 0.1)',
+            'md': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
+            'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
+          },
+          animation: {
+            float: 'float 4s ease-in-out infinite',
+            blink: 'blink 2.5s infinite ease-in-out',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-15px)' },
+            },
+            blink: {
+              '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+              '50%': { opacity: '0.3', transform: 'scale(0.8)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .hamburger-icon span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: rgb(42, 42, 62);
+      border-radius: 2px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .dark .hamburger-icon span {
+      background-color: #f1f3f4;
+    }
+
+    #mobile-menu-button.is-open .hamburger-icon span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+
+    #mobile-menu-button.is-open .hamburger-icon span:nth-child(2) {
+      opacity: 0;
+    }
+
+    #mobile-menu-button.is-open .hamburger-icon span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .theme-icon {
+      position: absolute;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .theme-icon:not(.is-visible) {
+      opacity: 0;
+      transform: rotate(-90deg) scale(0.5);
+    }
+
+    .theme-icon.is-visible {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+
+    #mobile-menu {
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s, visibility 0.4s;
+    }
+
+    p {
+      color: rgb(108, 117, 125);
+    }
+
+    .dark p {
+      color: #919ab5;
+    }
+
+    .dark h3 {
+      color: #ffffff;
+    }
+  </style>
+</head>
+
+<body class="bg-brand-background dark:bg-dark-bg text-text-primary dark:text-dark-text-primary antialiased transition-colors duration-300 font-sans">
+
+  <header id="header" class="sticky top-0 z-50 bg-[rgba(254,254,254,0.8)] dark:bg-[rgba(35,35,52,0.8)] backdrop-blur-sm border-b border-[rgba(107,115,255,0.1)]">
+    <div class="container mx-auto max-w-[1280px] px-4 md:px-[24px]">
+      <div class="flex justify-between items-center h-[72px]">
+
+        <a href="#home" class="flex items-center gap-[8px]">
+          <span class="w-[32px] h-[32px] bg-gradient-to-br from-brand-pink to-brand-purple rounded-[12px] flex items-center justify-center shadow-sm">
+            <img src="/imgs/star-16x16.svg" class="w-4 h-4">
+          </span>
+          <span class="font-semibold text-[15px] text-text-primary dark:text-white">Portfolio</span>
+        </a>
+
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="#home" class="font-semibold text-base text-text-secondary dark:text-[#919ab5] hover:text-text-primary dark:hover:text-white transition-colors">Início</a>
+          <a href="#about" class="font-semibold text-base text-text-secondary dark:text-[#919ab5] hover:text-text-primary dark:hover:text-white transition-colors">Sobre</a>
+          <a href="#projects" class="font-semibold text-base text-text-secondary dark:text-[#919ab5] hover:text-text-primary dark:hover:text-white transition-colors">Projetos</a>
+          <a href="#contact" class="font-semibold text-base text-text-secondary dark:text-[#919ab5] hover:text-text-primary dark:hover:text-white transition-colors">Contato</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+          <a href="#contact" class="hidden md:inline-flex items-center justify-center py-[8px] px-[16px] text-[16px] font-semibold text-white rounded-[10px] shadow-sm transition-opacity duration-150 hover:opacity-90 bg-gradient-to-br from-brand-pink to-brand-purple">Fale Comigo</a>
+
+          <div class="relative">
+            <button id="theme-toggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-dark-card flex items-center justify-center transition-colors relative overflow-hidden">
+              <div id="theme-icon-light" class="theme-icon"><svg class="w-5 h-5 text-text-primary dark:text-dark-text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg></div>
+              <div id="theme-icon-dark" class="theme-icon"><svg class="w-5 h-5 text-text-primary dark:text-dark-text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg></div>
+            </button>
+            <span class="absolute w-1.5 h-1.5 rounded-full animate-blink bg-[#fce393] top-0 -right-1.5"></span>
+            <span class="absolute w-1.5 h-1.5 rounded-full animate-blink bg-brand-pink bottom-0 -left-1.5" style="animation-delay: 1.5s;"></span>
+          </div>
+          <button id="mobile-menu-button" class="md:hidden w-10 h-10 rounded-xl bg-[rgb(243,244,245)] dark:bg-dark-card flex items-center justify-center z-50">
+            <div class="hamburger-icon w-6 h-6 flex flex-col justify-around">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobile-menu" class="fixed top-[72px] left-0 right-0 rounded-b-3xl shadow-xl z-50 p-6 flex flex-col justify-between hidden backdrop-blur-lg -translate-y-[120%] opacity-0 invisible bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(16,16,33,0.8)]">
+    <nav class="flex flex-col items-start space-y-10">
+      <a href="#home" class="mobile-nav-link text-xl font-normal text-text-secondary dark:text-dark-text-primary">Início</a>
+      <a href="#about" class="mobile-nav-link text-xl font-normal text-text-secondary dark:text-dark-text-primary">Sobre</a>
+      <a href="#projects" class="mobile-nav-link text-xl font-normal text-text-secondary dark:text-dark-text-primary">Projetos</a>
+      <a href="#contact" class="mobile-nav-link text-xl font-normal text-text-secondary dark:text-dark-text-primary">Contato</a><br>
+    </nav>
+    <div class="w-full">
+      <a href="#contact" class="mobile-nav-link w-full text-center block py-[8px] px-[16px] text-[16px] font-semibold text-white rounded-[10px] shadow-sm transition-opacity duration-150 hover:opacity-90 bg-gradient-to-br from-brand-pink to-brand-purple">Fale Comigo</a>
+    </div>
+  </div>
+
+  <main>
+    <section id="home" class="relative container mx-auto max-w-[1280px] px-[24px] py-[120px] md:py-[220px]">
+      <div class="grid md:grid-cols-2 gap-[64px] items-center">
+        <div class="space-y-6 text-center md:text-left" data-aos="fade-right">
+          <span class="inline-flex items-center gap-1.5 text-[12px] font-semibold text-white bg-gradient-to-r from-brand-pink to-brand-blue py-1 px-3 rounded-[10px]">
+            <img src="/imgs/star-12x12.svg" class="w-3 h-3" alt="Ícone de Estrela">Tecnóloga Criativa
+          </span>
+          <h1 class="text-4xl lg:text-6xl font-medium leading-tight text-text-primary dark:text-white">
+            <span class="font-lexend font-normal">Olá! Eu sou</span><br>
+            <span class=" bg-gradient-to-r from-brand-pink to-brand-purple bg-clip-text text-transparent font-light font-lexend">Raínne</span>
+          </h1>
+          <p class="text-[20px] text-text-secondary dark:text-[#919ab5]">Unindo criatividade e código para criar experiências digitais únicas com um toque de magia ✨</p>
+          <div class="flex items-center justify-center md:justify-start gap-4 pt-4">
+            <a href="#projects" class="py-[8px] px-[16px] text-[16px] font-semibold flex items-center gap-2 text-white rounded-[10px] shadow-sm transition-opacity hover:opacity-90 bg-gradient-to-br from-brand-pink to-brand-purple"><img src="/imgs/bigsmall-16x16.svg" class="w-5 h-5">Ver Projetos</a>
+            <a href="#about" class="py-[8px] px-[16px] text-[16px] font-semibold flex items-center gap-2 text-brand-pink border border-brand-pink rounded-[10px] bg-transparent transition-colors hover:bg-[rgba(255,179,209,0.1)]"><img src="/imgs/heartpink-16x16.svg" class="w-4.5 h-4.5">Sobre Mim</a>
+          </div>
+        </div>
+        <div class="relative flex justify-center" data-aos="fade-left" data-aos-delay="200">
+          <div class="absolute -inset-4 bg-gradient-to-tr from-brand-pink via-brand-purple to-brand-blue opacity-10 dark:opacity-20 rounded-[16px] blur-2xl"></div>
+          <div class="relative">
+            <div class="relative rounded-[16px] shadow-lg border-8 border-[rgba(255,255,255,0.5)] dark:border-[rgba(255,255,255,0.8)] overflow-hidden">
+              <img src="imgs/ray5.jpeg" class="w-[428px] h-[230px] object-cover" alt="Developer working">
+            </div>
+            <div class="absolute -bottom-7 -left-4 w-12 h-12 bg-gradient-to-br from-brand-pink to-brand-purple rounded-2xl flex items-center justify-center shadow-md animate-float" style="animation-delay: 0.2s;"><img src="/imgs/heartwhite-20x20.svg" class="w-6 h-6"></div>
+            <div class="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-brand-blue to-brand-green rounded-2xl flex items-center justify-center shadow-md animate-float" style="animation-delay: 0.7s;"><img src="/imgs/bigsmall-24x24.svg" class="w-6 h-6"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="bg-[#f9fafb] dark:bg-dark-card py-[80px] overflow-hidden">
+      <div class="container mx-auto max-w-[1280px] px-4 md:px-[24px]">
+        <div class="text-center mb-[64px]" data-aos="fade-up">
+          <h2 class="text-[36px] font-lexend font-light text-text-primary dark:text-dark-text-primary">Sobre Mim</h2>
+          <p class="mt-3 text-[19px] font-normal text-text-secondary dark:text-[#919ab5]">Desenvolvimento e design: transformando estética em código! 🌸</p>
+        </div>
+        <div class="grid lg:grid-cols-5 gap-[48px] items-start">
+          <div class="lg:col-span-3 space-y-4 text-base font-normal leading-relaxed text-text-secondary dark:text-[#919ab5]" data-aos="fade-right" data-aos-delay="100">
+            <p>Olá! Sou uma futura desenvolvedora de software, atualmente cursando Análise e Desenvolvimento de Sistemas (ADS). Minha jornada com a programação é recente, mas a paixão por transformar ideias em código é <span class="font-semibold text-brand-pink">intensa</span> e <span class="font-semibold text-[#a98fd1]">crescente</span>.</p>
+            <p>Esta nova área é enriquecida por uma base de seis anos de experiência profissional em <span class="font-semibold text-[#92cfe9]">Design (Raining Design)</span> e uma formação em <span class="font-semibold text-[#8fd1b1]">Marketing Digital</span>. Isso me permite criar soluções que não apenas funcionam, mas que também oferecem uma experiência de usuário excepcional e um apelo visual diferenciado. ☕✨</p>
+            <div class="pt-6">
+              <h3 class="font-normal text-[16px] mb-4 text-text-primary dark:text-white">Tecnologias que uso:</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-[12px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.3)] bg-[linear-gradient(to_right,rgba(179,229,254,0.2),rgba(179,255,214,0.2))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600 dark:bg-none">HTML</span>
+                <span class="text-[12px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.3)] bg-[linear-gradient(to_right,rgba(179,229,254,0.2),rgba(179,255,214,0.2))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600 dark:bg-none">CSS</span>
+                <span class="text-[12px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.3)] bg-[linear-gradient(to_right,rgba(179,229,254,0.2),rgba(179,255,214,0.2))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600 dark:bg-none">Tailwind</span>
+                <span class="text-[12px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.3)] bg-[linear-gradient(to_right,rgba(179,229,254,0.2),rgba(179,255,214,0.2))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600 dark:bg-none">Javascript</span>
+                <span class="text-[12px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.3)] bg-[linear-gradient(to_right,rgba(179,229,254,0.2),rgba(179,255,214,0.2))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600 dark:bg-none">PHP</span>
+                <span class="text-[12px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.3)] bg-[linear-gradient(to_right,rgba(179,229,254,0.2),rgba(179,255,214,0.2))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600 dark:bg-none">MySQL</span>
+                <span class="text-[12px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.3)] bg-[linear-gradient(to_right,rgba(179,229,254,0.2),rgba(179,255,214,0.2))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600 dark:bg-none">C</span>
+                <span class="text-[12px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.3)] bg-[linear-gradient(to_right,rgba(179,229,254,0.2),rgba(179,255,214,0.2))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600 dark:bg-none">Github</span>
+                <span class="text-[12px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.3)] bg-[linear-gradient(to_right,rgba(179,229,254,0.2),rgba(179,255,214,0.2))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600 dark:bg-none">Figma</span>
+                <span class="text-[12px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.3)] bg-[linear-gradient(to_right,rgba(179,229,254,0.2),rgba(179,255,214,0.2))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600 dark:bg-none">Photoshop</span>
+                <span class="text-[12px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.3)] bg-[linear-gradient(to_right,rgba(179,229,254,0.2),rgba(179,255,214,0.2))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600 dark:bg-none">Illustrator</span>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-2 grid grid-cols-2 gap-6">
+            <div class="flex flex-col gap-[12px] h-full transition-all duration-300 ease-in-out bg-[rgba(255,255,255,0.8)] p-[24px] rounded-[24px] shadow-sm border border-[rgba(255,179,209,0.2)] hover:-translate-y-2 hover:shadow-lg hover:border-[rgba(255,179,209,0.4)] dark:bg-dark-card dark:border-[rgba(209,179,255,0.1)] dark:hover:border-[rgba(209,179,255,0.3)]" data-aos="fade-left" data-aos-delay="200">
+              <span class="w-[48px] h-[48px] rounded-[16px] shrink-0 flex items-center justify-center bg-gradient-to-br from-brand-pink to-brand-purple"><img src="/imgs/code-24x24.svg" class="w-6 h-6"></span>
+              <div>
+                <h3 class="font-normal text-[16px] text-text-primary dark:text-white">Programação</h3>
+                <p class="text-[14px] text-text-secondary dark:text-[#919ab5]">Desenvolvimento web e mobile.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-[12px] h-full transition-all duration-300 ease-in-out bg-[rgba(255,255,255,0.8)] p-[24px] rounded-[24px] shadow-sm border border-[rgba(255,179,209,0.2)] hover:-translate-y-2 hover:shadow-lg hover:border-[rgba(255,179,209,0.4)] dark:bg-dark-card dark:border-[rgba(209,179,255,0.1)] dark:hover:border-[rgba(209,179,255,0.3)]" data-aos="fade-left" data-aos-delay="300">
+              <span class="w-[48px] h-[48px] rounded-[16px] shrink-0 flex items-center justify-center bg-gradient-to-br from-brand-pink to-brand-purple"><img src="/imgs/art-24x24.svg" class="w-6 h-6"></span>
+              <div>
+                <h3 class="font-normal text-[16px] text-text-primary dark:text-white">Design</h3>
+                <p class="text-[14px] text-text-secondary dark:text-[#919ab5]">Criação de arte gráfica UX/UI.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-[12px] h-full transition-all duration-300 ease-in-out bg-[rgba(255,255,255,0.8)] p-[24px] rounded-[24px] shadow-sm border border-[rgba(255,179,209,0.2)] hover:-translate-y-2 hover:shadow-lg hover:border-[rgba(255,179,209,0.4)] dark:bg-dark-card dark:border-[rgba(209,179,255,0.1)] dark:hover:border-[rgba(209,179,255,0.3)]" data-aos="fade-left" data-aos-delay="400">
+              <span class="w-[48px] h-[48px] rounded-[16px] shrink-0 flex items-center justify-center bg-gradient-to-br from-brand-pink to-brand-purple"><img src="/imgs/heartwhite-24x24.svg" class="w-6 h-6"></span>
+              <div>
+                <h3 class="font-normal text-[16px] text-text-primary dark:text-white">Crescimento</h3>
+                <p class="text-[14px] text-text-secondary dark:text-[#919ab5]">Compromisso com o aprendizado contínuo.</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-[12px] h-full transition-all duration-300 ease-in-out bg-[rgba(255,255,255,0.8)] p-[24px] rounded-[24px] shadow-sm border border-[rgba(255,179,209,0.2)] hover:-translate-y-2 hover:shadow-lg hover:border-[rgba(255,179,209,0.4)] dark:bg-dark-card dark:border-[rgba(209,179,255,0.1)] dark:hover:border-[rgba(209,179,255,0.3)]" data-aos="fade-left" data-aos-delay="500">
+              <span class="w-[48px] h-[48px] rounded-[16px] shrink-0 flex items-center justify-center bg-gradient-to-br from-brand-pink to-brand-purple"><img src="/imgs/coffeewhite-24x24.svg" class="w-6 h-6"></span>
+              <div>
+                <h3 class="font-normal text-[16px] text-text-primary dark:text-white">Café & Código</h3>
+                <p class="text-[14px] text-text-secondary dark:text-[#919ab5]">Combinação perfeita para criar.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-[80px] overflow-hidden">
+      <div class="container mx-auto max-w-[1280px] px-4 md:px-[24px]">
+        <div class="text-center mb-[64px]" data-aos="fade-up">
+          <h2 class="text-[36px] font-lexend font-light text-text-primary dark:text-dark-text-primary">Meus Projetos</h2>
+          <p class="mt-3 text-[20px] text-text-secondary dark:text-[#919ab5]">Alguns dos projetos que desenvolvi com amor e atenção aos detalhes ✨</p>
+        </div>
+        <div class="relative" data-aos="zoom-in" data-aos-delay="100">
+          <div id="slider-container" class="overflow-hidden px-8 md:px-0">
+            <div id="slider" class="flex transition-transform duration-500 ease-in-out md:-mx-4">
+              <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-4">
+                <div class="bg-white rounded-[16px] shadow-md border border-[rgba(0,0,0,0.07)] overflow-hidden transition-all duration-300 h-full flex flex-col hover:shadow-lg hover:-translate-y-1 dark:bg-dark-card dark:border-[rgba(80,80,95,0.5)]">
+                  <div class="relative h-[280px] bg-[#f0f0f0]">
+                    <img src="/imgs/calculadora.png" alt="Calculadora" class="w-full h-full object-cover">
+                  </div>
+                  <div class="p-6 space-y-4 flex flex-col flex-grow">
+                    <h3 class="text-[20px] font-normal text-text-primary dark:text-white">Calculadora PHP</h3>
+                    <p class="text-[14px] flex-grow text-text-secondary dark:text-[#919ab5]">Projeto de validação em PHP: Calculadora funcional com foco em lógica Back-end e interatividade (JavaScript).</p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                      <span class="text-[11px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.2)] bg-[linear-gradient(to_right,rgba(179,229,254,0.1),rgba(179,255,214,0.1))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600">PHP</span>
+                      <span class="text-[11px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.2)] bg-[linear-gradient(to_right,rgba(179,229,254,0.1),rgba(179,255,214,0.1))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600">HTML</span>
+                      <span class="text-[11px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.2)] bg-[linear-gradient(to_right,rgba(179,229,254,0.1),rgba(179,255,214,0.1))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600">CSS</span>
+                      <span class="text-[11px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.2)] bg-[linear-gradient(to_right,rgba(179,229,254,0.1),rgba(179,255,214,0.1))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600">Javascript</span>
+                    </div>
+                    <div class="flex items-center gap-4 pt-2">
+                      <a href="#" class="text-[14px] font-semibold text-brand-pink border border-brand-pink px-[16px] py-[12px] rounded-[10px] dark:text-brand-pink dark:border-brand-pink inline-flex items-center justify-center gap-1.5 flex-1 hover:bg-[rgba(255,179,209,0.1)] transition-colors"><img src="/imgs/githubpink-16x16.svg" class="w-4 h-4">GitHub</a>
+                      <span class="text-[14px] font-semibold text-white bg-gradient-to-br from-brand-pink to-brand-purple px-[16px] py-[12px] rounded-[10px] inline-flex items-center justify-center gap-1.5 flex-1 transition-all duration-500 cursor-not-allowed hover:from-gray-300 hover:to-gray-400 hover:shadow-none">
+                        <img src="/imgs/linkwhite.svg" class="w-4 h-4">Demo
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-4">
+                <div class="bg-white rounded-[16px] shadow-md border border-[rgba(0,0,0,0.07)] overflow-hidden transition-all duration-300 h-full flex flex-col hover:shadow-lg hover:-translate-y-1 dark:bg-dark-card dark:border-[rgba(80,80,95,0.5)]">
+                  <div class="relative h-[280px] bg-[#f0f0f0]">
+                    <img src="/imgs/magiccato.png" alt="App de Pixel Art" class="w-full h-full object-cover">
+                    <span class="absolute top-3 left-3 inline-flex items-center gap-1.5 text-[12px] font-semibold text-white bg-gradient-to-r from-brand-pink to-brand-purple py-1 px-2 rounded-[20px]"><img src="/imgs/heartwhite-12x12.svg" class="w-3.5 h-3.5"> Destaque</span>
+                  </div>
+                  <div class="p-6 space-y-4 flex flex-col flex-grow">
+                    <h3 class="text-[20px] font-normal text-text-primary dark:text-white">8-Ball Magiccato</h3>
+                    <p class="text-[14px] flex-grow text-text-secondary dark:text-[#919ab5]">Pergunte ao Magiccato! 🐱✨ Um web app de Magic 8-Ball com visual agradável e desenvolvido com HTML, animações CSS e JavaScript puro.</p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                      <span class="text-[11px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.2)] bg-[linear-gradient(to_right,rgba(179,229,254,0.1),rgba(179,255,214,0.1))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600">HTML</span>
+                      <span class="text-[11px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.2)] bg-[linear-gradient(to_right,rgba(179,229,254,0.1),rgba(179,255,214,0.1))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600">CSS</span>
+                      <span class="text-[11px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.2)] bg-[linear-gradient(to_right,rgba(179,229,254,0.1),rgba(179,255,214,0.1))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600">Javascript</span>
+                    </div>
+                    <div class="flex items-center gap-4 pt-2">
+                      <a href="https://github.com/RainingUXCode/8ball-magicatto" class="text-[14px] font-semibold text-brand-pink border border-brand-pink px-[16px] py-[12px] rounded-[10px] dark:text-brand-pink dark:border-brand-pink inline-flex items-center justify-center gap-1.5 flex-1 hover:bg-[rgba(255,179,209,0.1)] transition-colors"><img src="/imgs/githubpink-16x16.svg" class="w-4 h-4">GitHub</a>
+                      <a href="https://raininguxcode.github.io/8ball-magicatto/" class="text-[14px] font-semibold text-white bg-gradient-to-br from-brand-pink to-brand-purple px-[16px] py-[12px] rounded-[10px] inline-flex items-center justify-center gap-1.5 flex-1 transition-all duration-300 hover:brightness-110 hover:-translate-y-[2px] hover:shadow-lg">
+                        <img src="/imgs/linkwhite.svg" class="w-4 h-4">Demo
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-4">
+                <div class="bg-white rounded-[16px] shadow-md border border-[rgba(0,0,0,0.07)] overflow-hidden transition-all duration-300 h-full flex flex-col hover:shadow-lg hover:-translate-y-1 dark:bg-dark-card dark:border-[rgba(80,80,95,0.5)]">
+                  <div class="relative h-[280px] bg-[#f0f0f0]">
+                    <img src="imgs/portal.jpeg" alt="Dashboard Analytics" class="w-full h-full object-cover">
+                  </div>
+                  <div class="p-6 space-y-4 flex flex-col flex-grow">
+                    <h3 class="text-[20px] font-normal text-text-primary dark:text-white">Portal Escolar - Colégio Esperança</h3>
+                    <p class="text-[14px] flex-grow text-text-secondary dark:text-[#919ab5]">Projeto acadêmico feito com foco em demonstrar a lógica básica de back-end, interação com banco de dados e controle de acesso via sessões.</p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                      <span class="text-[11px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.2)] bg-[linear-gradient(to_right,rgba(179,229,254,0.1),rgba(179,255,214,0.1))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600">HTML</span>
+                      <span class="text-[11px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.2)] bg-[linear-gradient(to_right,rgba(179,229,254,0.1),rgba(179,255,214,0.1))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600">Tailwind CSS</span>
+                      <span class="text-[11px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.2)] bg-[linear-gradient(to_right,rgba(179,229,254,0.1),rgba(179,255,214,0.1))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600">PHP</span>
+                      <span class="text-[11px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.2)] bg-[linear-gradient(to_right,rgba(179,229,254,0.1),rgba(179,255,214,0.1))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600">MySQL</span>
+                      <span class="text-[11px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.2)] bg-[linear-gradient(to_right,rgba(179,229,254,0.1),rgba(179,255,214,0.1))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600">Javascript</span>
+                    </div>
+                    <div class="flex items-center gap-4 pt-2">
+                      <a href="https://github.com/RainingUXCode/portal-escolar-web" class="text-[14px] font-semibold text-brand-pink border border-brand-pink px-[16px] py-[12px] rounded-[10px] dark:text-brand-pink dark:border-brand-pink inline-flex items-center justify-center gap-1.5 flex-1 hover:bg-[rgba(255,179,209,0.1)] transition-colors"><img src="/imgs/githubpink-16x16.svg" class="w-4 h-4">GitHub</a>
+                      <span class="text-[14px] font-semibold text-white bg-gradient-to-br from-brand-pink to-brand-purple px-[16px] py-[12px] rounded-[10px] inline-flex items-center justify-center gap-1.5 flex-1 transition-all duration-500 cursor-not-allowed hover:from-gray-300 hover:to-gray-400 hover:shadow-none">
+                        <img src="/imgs/linkwhite.svg" class="w-4 h-4">Demo
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 p-4">
+                <div class="bg-white rounded-[16px] shadow-md border border-[rgba(0,0,0,0.07)] overflow-hidden transition-all duration-300 h-full flex flex-col hover:shadow-lg hover:-translate-y-1 dark:bg-dark-card dark:border-[rgba(80,80,95,0.5)]">
+                  <div class="relative h-[280px] bg-[#f0f0f0]">
+                    <img src="https://placehold.co/350x256/FFF0E1/2A2A3E?text=Projeto+4" alt="Blog Pessoal" class="w-full h-full object-cover">
+                  </div>
+                  <div class="p-6 space-y-4 flex flex-col flex-grow">
+                    <h3 class="text-[20px] font-normal text-text-primary dark:text-white">Em breve...</h3>
+                    <p class="text-[14px] flex-grow text-text-secondary dark:text-[#919ab5]">Próximo projeto será realizado em breve, por favor, aguarde!</p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                      <span class="text-[11px] font-semibold text-text-primary px-[8px] py-[2px] rounded-[10px] border border-[rgba(179,229,255,0.2)] bg-[linear-gradient(to_right,rgba(179,229,254,0.1),rgba(179,255,214,0.1))] dark:bg-dark-card dark:text-dark-text-secondary dark:border-gray-600 dark:bg-none">. . .</span>
+                    </div>
+                    <div class="flex items-center gap-4 pt-2">
+                      <a href="#" class="text-[14px] font-semibold text-brand-pink border border-brand-pink px-[16px] py-[12px] rounded-[10px] dark:text-brand-pink dark:border-brand-pink inline-flex items-center justify-center gap-1.5 flex-1 hover:bg-[rgba(255,179,209,0.1)] transition-colors"><img src="/imgs/githubpink-16x16.svg" class="w-4 h-4">GitHub</a>
+                      <span class="text-[14px] font-semibold text-white bg-gradient-to-br from-brand-pink to-brand-purple px-[16px] py-[12px] rounded-[10px] inline-flex items-center justify-center gap-1.5 flex-1 transition-all duration-500 cursor-not-allowed hover:from-gray-300 hover:to-gray-400 hover:shadow-none">
+                        <img src="/imgs/linkwhite.svg" class="w-4 h-4">Demo
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button id="prev-button" class="absolute top-1/2 -translate-y-1/2 w-[48px] h-[48px] bg-gradient-to-br from-brand-pink to-brand-purple rounded-full flex items-center justify-center shadow-md text-white transition-all duration-150 opacity-90 border-none hover:-translate-y-1/2 hover:scale-110 hover:opacity-100 left-4 md:-left-6">
+            <img src="/imgs/left.svg" class="w-5 h-5">
+          </button>
+          <button id="next-button" class="absolute top-1/2 -translate-y-1/2 w-[48px] h-[48px] bg-gradient-to-br from-brand-pink to-brand-purple rounded-full flex items-center justify-center shadow-md text-white transition-all duration-150 opacity-90 border-none hover:-translate-y-1/2 hover:scale-110 hover:opacity-100 right-4 md:-right-6">
+            <img src="/imgs/right.svg" class="w-5 h-5">
+          </button>
+        </div>
+        <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="200">
+          <a href="https://github.com/RainingUXCode" class="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 text-[14px] font-semibold text-brand-purple border border-brand-purple rounded-[15px] hover:bg-[rgba(209,179,255,0.1)] transition-colors"><img src="/imgs/githubpurple-16x16.svg" class="w-4 h-4">Ver Todos os Projetos no GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="bg-[#f9fafb] dark:bg-dark-card py-[80px] overflow-hidden">
+      <div class="container mx-auto max-w-[1280px] px-4 md:px-[24px]">
+        <div class="text-center mb-[64px]" data-aos="fade-up">
+          <h2 class="text-[36px] font-lexend font-light text-text-primary dark:text-dark-text-primary">Vamos Conversar!</h2>
+          <p class="mt-3 text-[19px] font-normal text-text-secondary dark:text-[#919ab5]">Se conecte comigo nas redes sociais e entre em contato! ☕✨</p>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-[48px] items-start">
+          <div class="space-y-[32px]" data-aos="fade-right" data-aos-delay="100">
+            <div class="space-y-6">
+              <div class="flex items-center gap-3 p-3 rounded-[16px]"> <span class="w-12 h-12 rounded-[16px] flex items-center justify-center bg-gradient-to-br from-brand-pink to-brand-purple text-2xl"><img src="/imgs/heartwhite-24x24.svg" class="w-6 h-6"></span>
+                <div>
+                  <h3 class="font-semibold text-[18px] text-text-primary dark:text-white">Pronta para novos desafios!</h3>
+                  <p class="text-[16px] text-text-secondary dark:text-[#919ab5]">Sempre aberta a projetos criativos</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-[16px]"> <span class="w-12 h-12 rounded-[16px] flex items-center justify-center bg-gradient-to-br from-brand-green to-brand-blue text-2xl"><img src="/imgs/coffeewhite-24x24.svg" class="w-6 h-6"></span>
+                <div>
+                  <h3 class="font-semibold text-[18px] text-text-primary dark:text-white">Tempo de resposta</h3>
+                  <p class="text-[16px] text-text-secondary dark:text-[#919ab5]">Geralmente respondo em 24h</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-[16px]"> <span class="w-12 h-12 rounded-[16px] flex items-center justify-center bg-gradient-to-br from-orange-300 to-brand-pink text-2xl"><img src="/imgs/speech-24x24.svg" class="w-6 h-6"></span>
+                <div>
+                  <h3 class="font-semibold text-[18px] text-text-primary dark:text-white">Idiomas</h3>
+                  <p class="text-[16px] text-text-secondary dark:text-[#919ab5]">Português • Inglês • JavaScript 😄</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 class="font-normal text-[18px] mb-4 text-text-primary dark:text-white">Mensagens rápidas:</h3>
+              <div class="space-y-2">
+                <a href="mailto:rainne.carvalho@gmail.com" class="block w-full text-left p-3 rounded-[12px] bg-white/30 border border-[rgba(255,179,209,0.2)] transition-colors text-[15px] text-text-primary hover:bg-[rgba(255,179,209,0.25)] hover:border-[rgba(255,179,209,1)] dark:text-[#ffffff] dark:hover:text-text-primary dark:hover:bg-white/80">
+                  "Oi! Gostaria de conversar sobre um projeto. 🌸"
+                </a>
+                <a href="mailto:rainne.carvalho@gmail.com" class="block w-full text-left p-3 rounded-[12px] bg-white/30 border border-[rgba(255,179,209,0.2)] transition-colors text-[15px] text-text-primary hover:bg-[rgba(255,179,209,0.25)] hover:border-[rgba(255,179,209,1)] dark:text-[#ffffff] dark:hover:text-text-primary dark:hover:bg-white/80">
+                  "Olá! Vi seu portfólio e adorei! ✨"
+                </a>
+                <a href="mailto:rainne.carvalho@gmail.com" class="block w-full text-left p-3 rounded-[12px] bg-white/30 border border-[rgba(255,179,209,0.2)] transition-colors text-[15px] text-text-primary hover:bg-[rgba(255,179,209,0.25)] hover:border-[rgba(255,179,209,1)] dark:text-[#ffffff] dark:hover:text-text-primary dark:hover:bg-white/80">
+                  "Tenho uma ideia para desenvolver. 💖"
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-6">
+            <a href="https://github.com/RainingUXCode" class="group bg-[rgba(255,255,255,0.8)] p-[24px] text-center rounded-[16px] shadow-sm border border-[rgba(255,179,209,0.1)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-gray-400 hover:shadow-gray-200 dark:bg-[rgba(35,35,52,0.8)] dark:border-[rgba(209,179,255,0.1)] dark:hover:border-gray-500 dark:hover:shadow-none" data-aos="fade-left" data-aos-delay="200">
+              <span class="w-[64px] h-[64px] rounded-[16px] flex items-center justify-center mx-auto mb-[12px] bg-gradient-to-br from-gray-400 to-gray-700 transition-transform duration-300 group-hover:scale-110">
+                <img src="/imgs/githubwhite-32x32.svg" class="w-8 h-8">
+              </span>
+              <div>
+                <h3 class="font-normal text-[18px] text-text-primary dark:text-white">GitHub</h3>
+                <p class="text-[14px] text-text-secondary dark:text-[#919ab5]">Confira meus códigos</p>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/raínne-carvalho-lima-87923b236" class="group bg-[rgba(255,255,255,0.8)] p-[24px] text-center rounded-[16px] shadow-sm border border-[rgba(255,179,209,0.1)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-blue-300 hover:shadow-blue-100 dark:bg-[rgba(35,35,52,0.8)] dark:border-[rgba(209,179,255,0.1)] dark:hover:border-blue-400 dark:hover:shadow-none" data-aos="fade-left" data-aos-delay="300">
+              <span class="w-[64px] h-[64px] rounded-[16px] flex items-center justify-center mx-auto mb-[12px] bg-gradient-to-br from-blue-300 to-blue-700 transition-transform duration-300 group-hover:scale-110">
+                <img src="/imgs/linkedin-32x32.svg" class="w-8 h-8">
+              </span>
+              <div>
+                <h3 class="font-normal text-[18px] text-text-primary dark:text-white">LinkedIn</h3>
+                <p class="text-[14px] text-text-secondary dark:text-[#919ab5]">Conecte-se comigo</p>
+              </div>
+            </a>
+            <a href="https://www.instagram.com/ray.carvalho" class="group bg-[rgba(255,255,255,0.8)] p-[24px] text-center rounded-[16px] shadow-sm border border-[rgba(255,179,209,0.1)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-pink-300 hover:shadow-pink-100 dark:bg-[rgba(35,35,52,0.8)] dark:border-[rgba(209,179,255,0.1)] dark:hover:border-pink-400 dark:hover:shadow-none" data-aos="fade-left" data-aos-delay="400">
+              <span class="w-[64px] h-[64px] rounded-[16px] flex items-center justify-center mx-auto mb-[12px] bg-gradient-to-br from-pink-400 to-purple-500 transition-transform duration-300 group-hover:scale-110">
+                <img src="/imgs/instagram.svg" class="w-8 h-8">
+              </span>
+              <div>
+                <h3 class="font-normal text-[18px] text-text-primary dark:text-white">Instagram</h3>
+                <p class="text-[14px] text-text-secondary dark:text-[#919ab5]">Conecte-se comigo</p>
+              </div>
+            </a>
+            <a href="https://www.behance.net/rainingdesign" class="group bg-[rgba(255,255,255,0.8)] p-[24px] text-center rounded-[16px] shadow-sm border border-[rgba(255,179,209,0.1)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-sky-300 hover:shadow-sky-100 dark:bg-[rgba(35,35,52,0.8)] dark:border-[rgba(209,179,255,0.1)] dark:hover:border-sky-400 dark:hover:shadow-none" data-aos="fade-left" data-aos-delay="500">
+              <span class="w-[64px] h-[64px] rounded-[16px] flex items-center justify-center mx-auto mb-[12px] bg-gradient-to-br from-sky-300 to-sky-600 transition-transform duration-300 group-hover:scale-110">
+                <img src="/imgs/behance.svg" class="w-8 h-8">
+              </span>
+              <div>
+                <h3 class="font-normal text-[18px] text-text-primary dark:text-white">Behance</h3>
+                <p class="text-[14px] text-text-secondary dark:text-[#919ab5]">Veja outros projetos</p>
+              </div>
+            </a>
+          </div>
+          </a>
+        </div>
+        <div class="mt-16 bg-gradient-to-r from-pink-300/10 to-purple-400/10 p-8 rounded-[24px] text-center border border-[rgba(255,179,209,0.2)] dark:border-[rgba(209,179,255,0.2)]" data-aos="zoom-in-up" data-aos-delay="300">
+
+          <h3 class="text-[24px] font-semibold text-text-primary dark:text-white">Tem um projeto em mente?</h3>
+          <p class="mt-2 text-[16px] max-w-xl mx-auto text-text-secondary dark:text-[#919ab5]">Vamos transformar sua ideia em realidade! Mande um email e vamos conversar.</p>
+          <a href="mailto:rainne.carvalho@gmail.com" class="mt-6 inline-flex items-center justify-center gap-1.5 px-[20px] py-[10px] text-[16px] font-semibold text-white rounded-[12px] shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:brightness-110 bg-gradient-to-br from-brand-pink to-brand-purple">
+            <img src="/imgs/email-16x16.svg" class="w-4 h-4">
+            Enviar Email
+          </a>
+        </div>
+      </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-brand-background dark:bg-dark-bg border-t border-[rgba(255,179,209,0.15)] py-[48px]">
+    <div class="container mx-auto max-w-7xl px-4 text-center" data-aos="fade-up">
+      <div class="flex justify-center items-center gap-[8px]">
+        <span class="w-[32px] h-[32px] bg-gradient-to-br from-brand-pink to-brand-purple rounded-[12px] flex items-center justify-center shadow-md">
+          <img src="/imgs/code-16x16.svg" class="w-4.5 h-4.5">
+        </span>
+        <span class="font-semibold text-[16px] text-text-primary dark:text-white">Portfolio</span>
+      </div>
+      <p class="italic my-4 text-[16px] text-text-secondary dark:text-[#919ab5]">"Código é poesia, design é arte e café é combustível"</p>
+
+      <div class="h-px max-w-sm mx-auto my-6 bg-brand-pink opacity-30"></div>
+
+      <div class="max-w-sm mx-auto">
+        <p class="text-[14px] inline-flex items-center gap-1.5 text-text-secondary dark:text-[#919ab5]">Raínne Carvalho Lima © 2025 | Feito com <img src="/imgs/heartpink-16x16.svg" class="w-4 h-4"> e muito ☕</p>
+        <p class="text-[12px] mt-1 text-text-secondary dark:text-[#919ab5]">Desenvolvido com HTML, JavaScript e Tailwind CSS</p>
+        <p class="text-[12px] mt-4 opacity-50 text-text-secondary dark:text-[#919ab5]">( ◕‿◕ ) Obrigada por visitar meu cantinho da web!</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
