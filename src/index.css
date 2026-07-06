@@ -66,10 +66,10 @@
 .global-aurora::before {
   content: "";
   position: absolute;
-  inset: -18%;
-  opacity: 0.3;
+  inset: -26%;
+  opacity: 0.34;
   filter: blur(36px);
-  transform: translate3d(-5%, -2%, 0) scale(1.06);
+  transform: translate3d(-14%, -6%, 0) scale(1.12) rotate(-2deg);
   will-change: transform, opacity;
   background-image: repeating-linear-gradient(
     100deg,
@@ -81,10 +81,10 @@
     rgba(169, 200, 172, 0.62) 30%,
     transparent 38%
   );
-  background-size: 120% 120%;
+  background-size: 135% 135%;
   background-position: 50% 50%;
   mask-image: radial-gradient(ellipse at center, black 10%, transparent 76%);
-  animation: global-aurora-flow 42s ease-in-out infinite alternate;
+  animation: global-aurora-flow 24s ease-in-out infinite alternate;
 }
 
 .global-aurora::after {
@@ -105,7 +105,7 @@
 }
 
 .dark .global-aurora::before {
-  opacity: 0.3;
+  opacity: 0.34;
 }
 
 .dark .global-aurora::after {
@@ -161,10 +161,10 @@
 
 @keyframes global-aurora-flow {
   from {
-    transform: translate3d(-5%, -2%, 0) scale(1.06);
+    transform: translate3d(-14%, -6%, 0) scale(1.12) rotate(-2deg);
   }
   to {
-    transform: translate3d(5%, 2%, 0) scale(1.08);
+    transform: translate3d(12%, 7%, 0) scale(1.16) rotate(2deg);
   }
 }
 
@@ -244,6 +244,17 @@
   backface-visibility: hidden;
   contain: paint;
   transform: translateZ(0);
+}
+
+#about .group,
+#technologies .group,
+#projects .group,
+#contact .group,
+#home a,
+#projects a,
+#contact a,
+#contact button {
+  transition-duration: 180ms;
 }
 
 /* Base de estilos globais */
