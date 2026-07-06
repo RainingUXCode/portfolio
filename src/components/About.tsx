@@ -34,11 +34,11 @@ export default function About() {
             Sobre mim
           </p>
           <h2 className="font-lexend text-[32px] font-medium leading-tight text-text-primary dark:text-dark-text-primary md:text-[36px]">
-            Design e c�digo, na mesma pessoa
+            Design e código, na mesma pessoa
           </h2>
           <p className="mx-auto mt-4 max-w-[620px] text-[18px] font-normal leading-relaxed text-text-secondary dark:text-[#c3c9da]">
-            Seis anos transformando ideias em experi�ncia visual � agora tamb�m
-            em c�digo.
+            Seis anos transformando ideias em experiência visual, agora também
+            em código.
           </p>
         </div>
         <div className="grid lg:grid-cols-5 gap-[48px] items-start">
@@ -48,10 +48,10 @@ export default function About() {
             data-aos-delay="100"
           >
             <p>
-              Ol�! Sou uma desenvolvedora de software, atualmente cursando
-              An�lise e Desenvolvimento de Sistemas (ADS). Minha jornada com a
-              programa��o � recente, mas a paix�o por transformar ideias em
-              c�digo �{" "}
+              Olá! Sou uma desenvolvedora de software, atualmente cursando
+              Análise e Desenvolvimento de Sistemas (ADS). Minha jornada com a
+              programação é recente, mas a paixão por transformar ideias em
+              código é{" "}
               <span className="font-semibold text-[#F0AEC8] dark:text-brand-pink">
                 intensa
               </span>{" "}
@@ -62,18 +62,18 @@ export default function About() {
               .
             </p>
             <p>
-              Esta nova �rea � enriquecida por uma base de seis anos de
-              experi�ncia profissional em{" "}
+              Esta nova área é enriquecida por uma base de seis anos de
+              experiência profissional em{" "}
               <span className="font-semibold text-[#AECFE0] dark:text-[#AECFE0]">
                 Design
               </span>{" "}
-              e uma forma��o em{" "}
+              e uma formação em{" "}
               <span className="font-semibold text-[#A9C8AC] dark:text-[#A9C8AC]">
                 Marketing Digital
               </span>
-              . Isso me permite criar solu��es que n�o apenas funcionam, mas que
-              tamb�m oferecem uma experi�ncia de usu�rio excepcional e um apelo
-              visual diferenciado. ??
+              . Isso me permite criar soluções que não apenas funcionam, mas que
+              também oferecem uma experiência de usuário excepcional e um apelo
+              visual diferenciado. ☕✨
             </p>
             <div
               className="mt-9 space-y-6 border-l border-[rgba(240,174,200,0.18)] pl-5 dark:border-[rgba(198,180,232,0.14)]"
@@ -89,7 +89,7 @@ export default function About() {
                   darkText: "dark:text-brand-pink",
                 },
                 {
-                  label: "Evolu��o",
+                  label: "Evolução",
                   items: learningPath,
                   color: "from-[#AECFE0] to-[#A9C8AC]",
                   text: "text-[#AECFE0]",
@@ -125,17 +125,16 @@ export default function About() {
             </div>
           </div>
           <div className="lg:col-span-2 grid grid-cols-2 gap-6">
-            {/* Cards de Skills */}
             {[
               {
                 img: "code",
-                title: "Programa��o",
+                title: "Programação",
                 desc: "Desenvolvimento web com foco em front-end.",
               },
               {
                 img: "art",
                 title: "Design",
-                desc: "Cria��o de interfaces e identidade visual.",
+                desc: "Criação de interfaces e identidade visual.",
               },
               {
                 img: "heartwhite",
@@ -144,8 +143,8 @@ export default function About() {
               },
               {
                 img: "coffeewhite",
-                title: "Caf� & C�digo",
-                desc: "Combina��o perfeita para criar.",
+                title: "Café & Código",
+                desc: "Combinação perfeita para criar.",
               },
             ].map((skill, idx) => (
               <div
