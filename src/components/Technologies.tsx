@@ -185,6 +185,8 @@ export default function Technologies() {
                         src={tech.icon}
                         className="h-full w-full object-contain"
                         alt={`${tech.label} logo`}
+                        loading="lazy"
+                        decoding="async"
                       />
                     </span>
                     <div className="min-w-0">

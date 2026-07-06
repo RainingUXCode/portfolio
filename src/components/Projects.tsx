@@ -60,30 +60,35 @@ type Project = (typeof projectsData)[number];
 
 const isPlaceholderLink = (link?: string) => !link || link === "#";
 
+let activeProjectVideo: HTMLVideoElement | null = null;
+
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleMouseEnter = () => {
-    if (!project.video || !videoRef.current) return;
+    const video = videoRef.current;
+    if (!project.video || !video) return;
 
-    document
-      .querySelectorAll<HTMLVideoElement>("video[data-project-preview]")
-      .forEach((video) => {
-        if (video !== videoRef.current) {
-          video.pause();
-          video.currentTime = 0;
-        }
-      });
+    if (activeProjectVideo && activeProjectVideo !== video) {
+      activeProjectVideo.pause();
+      activeProjectVideo.currentTime = 0;
+    }
 
-    videoRef.current.currentTime = 0;
-    videoRef.current.play().catch(() => undefined);
+    activeProjectVideo = video;
+    video.currentTime = 0;
+    video.play().catch(() => undefined);
   };
 
   const handleMouseLeave = () => {
-    if (!project.video || !videoRef.current) return;
+    const video = videoRef.current;
+    if (!project.video || !video) return;
 
-    videoRef.current.pause();
-    videoRef.current.currentTime = 0;
+    video.pause();
+    video.currentTime = 0;
+
+    if (activeProjectVideo === video) {
+      activeProjectVideo = null;
+    }
   };
 
   return (
@@ -99,6 +104,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <img
           src={project.image}
           alt={`Preview do projeto ${project.title}`}
+          loading="lazy"
+          decoding="async"
           className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.045]"
         />
 
@@ -110,6 +117,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               muted
               playsInline
               preload="metadata"
+              poster={project.image}
               loop
               className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
             >

@@ -54,6 +54,7 @@
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  isolation: isolate;
   background: linear-gradient(
     180deg,
     rgba(253, 251, 252, 0.96),
@@ -65,11 +66,11 @@
 .global-aurora::before {
   content: "";
   position: absolute;
-  inset: -70px;
+  inset: -18%;
   opacity: 0.3;
   filter: blur(36px);
-  transform: translateZ(0);
-  will-change: background-position, opacity;
+  transform: translate3d(-5%, -2%, 0) scale(1.06);
+  will-change: transform, opacity;
   background-image: repeating-linear-gradient(
     100deg,
     transparent 0%,
@@ -80,10 +81,10 @@
     rgba(169, 200, 172, 0.62) 30%,
     transparent 38%
   );
-  background-size: 200% 200%;
+  background-size: 120% 120%;
   background-position: 50% 50%;
   mask-image: radial-gradient(ellipse at center, black 10%, transparent 76%);
-  animation: global-aurora-flow 68s linear infinite;
+  animation: global-aurora-flow 42s ease-in-out infinite alternate;
 }
 
 .global-aurora::after {
@@ -160,10 +161,10 @@
 
 @keyframes global-aurora-flow {
   from {
-    background-position: 50% 50%;
+    transform: translate3d(-5%, -2%, 0) scale(1.06);
   }
   to {
-    background-position: 350% 50%;
+    transform: translate3d(5%, 2%, 0) scale(1.08);
   }
 }
 
@@ -213,6 +214,36 @@
   .typewriter-text {
     animation: none;
   }
+}
+
+@layer utilities {
+  .perf-layer {
+    backface-visibility: hidden;
+    contain: paint;
+    transform: translateZ(0);
+  }
+
+  .section-render {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
+}
+
+#about,
+#technologies,
+#projects,
+#contact {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+#about .group,
+#technologies .group,
+#projects .group,
+#contact .group {
+  backface-visibility: hidden;
+  contain: paint;
+  transform: translateZ(0);
 }
 
 /* Base de estilos globais */
