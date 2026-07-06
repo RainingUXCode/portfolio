@@ -1,4 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
+import { assetUrl } from "../lib/assets";
 
 const infoCards = [
   {
@@ -135,7 +136,7 @@ export default function Contact() {
                   className={`relative flex h-12 w-12 shrink-0 items-center justify-center rounded-[16px] bg-gradient-to-br ${item.color} shadow-[0_12px_28px_rgba(198,180,232,0.18)] transition-transform duration-300 group-hover:scale-105`}
                 >
                   <img
-                    src={`/imgs/${item.img}-24x24.svg`}
+                    src={assetUrl(`imgs/${item.img}-24x24.svg`)}
                     className="h-6 w-6"
                     alt={item.title}
                   />
@@ -170,7 +171,7 @@ export default function Contact() {
                   className={`relative mx-auto mb-[12px] flex h-[64px] w-[64px] items-center justify-center rounded-[16px] bg-gradient-to-br ${social.color} transition-transform duration-300 group-hover:scale-110`}
                 >
                   <img
-                    src={`/imgs/${social.icon}`}
+                    src={assetUrl(`imgs/${social.icon}`)}
                     className="h-8 w-8"
                     alt={social.name}
                   />

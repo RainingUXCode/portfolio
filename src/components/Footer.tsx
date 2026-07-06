@@ -1,3 +1,5 @@
+import { assetUrl } from "../lib/assets";
+
 export default function Footer() {
   return (
     <footer className="bg-[linear-gradient(135deg,rgba(253,251,252,0.70),rgba(246,240,255,0.52),rgba(235,247,255,0.34))] dark:bg-[linear-gradient(135deg,rgba(16,16,33,0.64),rgba(24,22,39,0.58))] backdrop-blur-xl shadow-[inset_0_22px_46px_rgba(198,180,232,0.08)] py-[28px]">
@@ -8,7 +10,7 @@ export default function Footer() {
         <div className="flex justify-center items-center gap-[8px]">
           <span className="w-[32px] h-[32px] bg-gradient-to-br from-brand-pink to-brand-purple rounded-[12px] flex items-center justify-center shadow-md">
             <img
-              src="/imgs/code-16x16.svg"
+              src={assetUrl("imgs/code-16x16.svg")}
               className="w-4.5 h-4.5"
               alt="Code"
             />
@@ -25,7 +27,7 @@ export default function Footer() {
           <p className="text-[13px] inline-flex items-center gap-1.5 text-text-secondary dark:text-[#919ab5]">
             Raínne Carvalho Lima © 2026 | Feito com{" "}
             <img
-              src="/imgs/heartpink-16x16.svg"
+              src={assetUrl("imgs/heartpink-16x16.svg")}
               className="w-4 h-4"
               alt="Heart"
             />{" "}

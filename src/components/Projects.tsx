@@ -1,12 +1,13 @@
 import { useRef } from "react";
+import { assetUrl } from "../lib/assets";
 
 const projectsData = [
   {
     title: "Rick & Morty API App",
     desc: "Aplicação com Next.js (App Router) consumindo a Rick & Morty API, com deploy contínuo na Vercel.",
     media: "Next.js • React • TS",
-    image: "/imgs/projects/rickmorty.png",
-    video: "/videos/rickmorty.mp4",
+    image: assetUrl("imgs/projects/rickmorty.png"),
+    video: assetUrl("videos/rickmorty.mp4"),
     tag: "Destaque",
     tagVariant: "pink",
     tech: ["Next.js", "React", "TypeScript", "Vercel"],
@@ -19,8 +20,8 @@ const projectsData = [
     title: "Portal Escolar",
     desc: "Sistema com autenticação e controle de acesso, testado com PHPUnit (unitários) e Playwright (E2E).",
     media: "PHP • MySQL • Tests",
-    image: "/imgs/projects/portal-escolar.png",
-    video: "/videos/portal.mp4",
+    image: assetUrl("imgs/projects/portal-escolar.png"),
+    video: assetUrl("videos/portal.mp4"),
     tech: ["PHP", "MySQL", "Playwright", "PHPUnit"],
     primaryLabel: "GitHub",
     secondaryLabel: "Demo",
@@ -31,7 +32,7 @@ const projectsData = [
     title: "IAvalia",
     desc: "Extensão universitária para a Secretaria de Educação da Paraíba. Código não publicado por confidencialidade.",
     media: "React • Figma • API Rest",
-    image: "/imgs/projects/iavalia.jpeg",
+    image: assetUrl("imgs/projects/iavalia.jpeg"),
     tag: "Confidencial",
     tagVariant: "blue",
     tech: ["React", "Figma", "Scrum", "API Rest"],
@@ -45,8 +46,8 @@ const projectsData = [
     title: "Café Leblanc",
     desc: "Sistema em Java aplicando Programação Orientada a Objetos, com SRP explícito entre as classes.",
     media: "Java • POO",
-    image: "/imgs/projects/cafe-leblanc.png",
-    video: "/videos/cafe-leblanc.mp4",
+    image: assetUrl("imgs/projects/cafe-leblanc.png"),
+    video: assetUrl("videos/cafe-leblanc.mp4"),
     tech: ["Java", "POO"],
     primaryLabel: "GitHub",
     secondaryLabel: "Demo",

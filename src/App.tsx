@@ -9,6 +9,7 @@ import Technologies from "./components/Technologies";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import { assetUrl } from "./lib/assets";
 
 export default function App() {
   const [isDark, setIsDark] = useState(false);
@@ -56,7 +57,7 @@ export default function App() {
             <a href="#home" className="flex items-center gap-[8px]">
               <span className="w-[32px] h-[32px] bg-gradient-to-br from-brand-pink to-brand-purple rounded-[12px] flex items-center justify-center shadow-sm">
                 <img
-                  src="/imgs/star-16x16.svg"
+                  src={assetUrl("imgs/star-16x16.svg")}
                   className="w-4 h-4"
                   alt="Estrela"
                 />
@@ -256,7 +257,10 @@ export default function App() {
             <div className="grid flex-1 items-center gap-[64px] py-[56px] md:grid-cols-2 md:py-[72px]">
               <div className="space-y-6 text-center md:text-left">
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#F0AEC8]/45 text-[#F0AEC8] dark:border-brand-pink/40 dark:text-brand-pink font-semibold text-sm backdrop-blur-sm">
-                  <img src="/imgs/heartpink-16x16.svg" className="w-4 h-4" />
+                  <img
+                    src={assetUrl("imgs/heartpink-16x16.svg")}
+                    className="w-4 h-4"
+                  />
                   Portfólio Pessoal
                 </span>
                 <h1 className="text-4xl lg:text-6xl font-medium leading-[1.12] text-text-primary dark:text-white">
@@ -275,7 +279,7 @@ export default function App() {
                     className="flex items-center gap-2 rounded-[10px] bg-gradient-to-br from-brand-pink to-brand-purple px-[14px] py-[7px] font-lexend text-[14px] font-medium text-white shadow-sm transition-opacity hover:opacity-90"
                   >
                     <img
-                      src="/imgs/bigsmall-16x16.svg"
+                      src={assetUrl("imgs/bigsmall-16x16.svg")}
                       className="h-4 w-4"
                       alt="Projetos"
                     />
@@ -286,7 +290,7 @@ export default function App() {
                     className="flex items-center gap-2 rounded-[10px] border border-[#F0AEC8] bg-[rgba(253,251,252,0.32)] px-[14px] py-[7px] font-lexend text-[14px] font-medium text-[#F0AEC8] transition-colors hover:bg-[rgba(240,174,200,0.18)] dark:border-brand-pink dark:bg-transparent dark:text-brand-pink dark:hover:bg-[rgba(240,174,200,0.1)]"
                   >
                     <img
-                      src="/imgs/heartpink-16x16.svg"
+                      src={assetUrl("imgs/heartpink-16x16.svg")}
                       className="h-4 w-4"
                       alt="Sobre Mim"
                     />
@@ -379,7 +383,7 @@ export default function App() {
                     style={{ animationDelay: "0.2s" }}
                   >
                     <img
-                      src="/imgs/heartwhite-20x20.svg"
+                      src={assetUrl("imgs/heartwhite-20x20.svg")}
                       className="w-6 h-6"
                       alt="Coração"
                     />
@@ -390,7 +394,7 @@ export default function App() {
                     style={{ animationDelay: "0.7s" }}
                   >
                     <img
-                      src="/imgs/bigsmall-24x24.svg"
+                      src={assetUrl("imgs/bigsmall-24x24.svg")}
                       className="w-6 h-6"
                       alt="Ícone Mágico"
                     />
@@ -427,4 +431,3 @@ export default function App() {
     </div>
   );
 }
-
