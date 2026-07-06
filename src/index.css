@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Lexend:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* SUAS CORES RESTAURADAS */
+  --color-brand-background: rgb(251, 246, 249);
+  --color-brand-pink: rgb(240, 174, 200);
+  --color-brand-purple: rgb(198, 180, 232);
+  --color-brand-blue: rgb(174, 207, 224);
+  --color-brand-green: rgb(169, 200, 172);
+
+  --color-text-primary: rgb(34, 34, 52);
+  --color-text-secondary: rgb(98, 105, 126);
+
+  --color-dark-bg: #101021;
+  --color-dark-card: #232334;
+  --color-dark-text-primary: #f1f3f4;
+  --color-dark-text-secondary: #a9a9a9;
+
+  /* FONTES */
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+  --font-lexend: Lexend, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+
+  /* SUAS ANIMAÇÕES (INCLUINDO A AURORA) */
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-blink: blink 2.5s infinite ease-in-out;
+  --animate-aurora: aurora 60s linear infinite;
+}
+
+/* KEYFRAMES */
+@keyframes spin-once {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-once {
+  animation: spin-once 0.5s ease-in-out;
+}
+
+.animate-scroll-cue {
+  animation: scroll-cue 1.8s ease-in-out infinite;
+}
+
+.global-aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    rgba(253, 251, 252, 0.96),
+    rgba(246, 240, 255, 0.92) 48%,
+    rgba(235, 247, 255, 0.9)
+  );
+}
+
+.global-aurora::before {
+  content: "";
+  position: absolute;
+  inset: -90px;
+  opacity: 0.34;
+  filter: blur(52px);
+  background-image: repeating-linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(240, 174, 200, 0.92) 10%,
+    rgba(198, 180, 232, 0.92) 15%,
+    rgba(174, 207, 224, 0.86) 20%,
+    rgba(240, 174, 200, 0.82) 25%,
+    rgba(169, 200, 172, 0.62) 30%,
+    transparent 38%
+  );
+  background-size: 220% 220%;
+  background-position: 50% 50%;
+  mask-image: radial-gradient(ellipse at center, black 10%, transparent 76%);
+  animation: global-aurora-flow 46s linear infinite;
+}
+
+.global-aurora::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(253, 251, 252, 0.12), transparent 42%),
+    linear-gradient(180deg, rgba(253, 251, 252, 0.06), transparent 52%);
+}
+
+.dark .global-aurora {
+  background: linear-gradient(
+    180deg,
+    rgba(16, 16, 33, 0.98),
+    rgba(18, 18, 35, 0.95)
+  );
+}
+
+.dark .global-aurora::before {
+  opacity: 0.34;
+}
+
+.dark .global-aurora::after {
+  background:
+    radial-gradient(circle at 50% 38%, rgba(16, 16, 33, 0.18), transparent 44%),
+    linear-gradient(180deg, rgba(16, 16, 33, 0.22), transparent 56%);
+}
+
+.typewriter-text {
+  display: inline-block;
+  max-width: max-content;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  width: 0;
+  border-right: 1px solid transparent;
+  animation:
+    typewriter-loop 10.5s steps(var(--typewriter-steps, 18), end)
+      var(--typewriter-delay, 0s) infinite both,
+    typewriter-caret 0.8s step-end var(--typewriter-delay, 0s) infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes aurora {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
+
+@keyframes global-aurora-flow {
+  from {
+    background-position: 50% 50%;
+  }
+  to {
+    background-position: 350% 50%;
+  }
+}
+
+@keyframes scroll-cue {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  35%,
+  65% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+}
+
+@keyframes typewriter-loop {
+  0%,
+  8% {
+    width: 0;
+  }
+  34%,
+  58% {
+    width: var(--typewriter-chars);
+  }
+  76%,
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes typewriter-caret {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
+
+/* Base de estilos globais */
+@layer base {
+  p {
+    color: var(--color-text-secondary);
+  }
+  .dark p {
+    color: #919ab5;
+  }
+  .dark h3 {
+    color: #ffffff;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}

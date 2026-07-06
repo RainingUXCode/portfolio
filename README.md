@@ -1,44 +1,75 @@
-# 🌸 Portfolio Pessoal - Raínne Carvalho (RainingUXCode)
+# React + TypeScript + Vite
 
-Bem-vindo ao repositório do meu portfólio pessoal! Este projeto foi desenvolvido para centralizar meus projetos, habilidades e minha jornada como futura Dev Full-stack.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-> "Unindo criatividade e código para criar experiências digitais únicas com um toque de magia ✨"
+Currently, two official plugins are available:
 
----
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## 🚀 Tecnologias Utilizadas
+## React Compiler
 
-O projeto foi construído focado em performance, design responsivo e interatividade suave:
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-- **HTML5** - Estrutura semântica.
-- **Tailwind CSS** - Estilização moderna e utilitária.
-- **JavaScript (ES6+)** - Lógica de interatividade, carrossel e modo escuro.
-- **AOS (Animate On Scroll)** - Animações de rolagem.
-- **Google Fonts (Lexend)** - Tipografia personalizada.
+## Expanding the ESLint configuration
 
----
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## ✨ Funcionalidades
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-- [x] **Dark Mode:** Alternância entre temas claro e escuro com persistência no `localStorage`.
-- [x] **Design Responsivo:** Adaptado para dispositivos móveis, tablets e desktops.
-- [x] **Carrossel de Projetos:** Navegação infinita entre os principais trabalhos.
-- [x] **Animações:** Elementos flutuantes e transições suaves para uma experiência "mágica".
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
----
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 
-## 🗺️ Roadmap de Evolução
+```
 
-Este portfólio é um projeto vivo e será atualizado à medida que eu avanço nos meus estudos de ADS e JavaScript.
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-**Melhorias planejadas:**
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-- [ ] Autoplay no Carrossel.
-- [ ] Ajustes no menu mobile.
-- [ ] Adicionar função de mudar o idioma para Inglês.
-- [ ] Expansão do Portfólio com novos projetos.
-- [ ] Refatoração de código para melhor performance.
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 
----
-
-Feito com ❤️ e muito ☕ por Raínne Carvalho.
+```
