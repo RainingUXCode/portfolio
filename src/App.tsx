@@ -1,7 +1,6 @@
 ﻿import { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { motion } from "motion/react";
 
 // Seus componentes
 import About from "./components/About";
@@ -26,6 +25,21 @@ export default function App() {
       document.documentElement.classList.add("dark");
       setIsDark(true);
     }
+
+    const updateAnimationState = () => {
+      document.documentElement.classList.toggle(
+        "is-tab-hidden",
+        document.hidden
+      );
+    };
+
+    updateAnimationState();
+    document.addEventListener("visibilitychange", updateAnimationState);
+
+    return () => {
+      document.removeEventListener("visibilitychange", updateAnimationState);
+      document.documentElement.classList.remove("is-tab-hidden");
+    };
   }, []);
 
   const toggleTheme = () => {
@@ -248,10 +262,7 @@ export default function App() {
       <main className="relative overflow-hidden">
         {/* HERO COM ACETERNITY AURORA */}
         <section id="home" className="relative min-h-[calc(100vh-72px)] w-full">
-          <motion.div
-            initial={{ opacity: 1, y: 0 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
+          <div
             className="relative z-10 container mx-auto flex min-h-[calc(100vh-72px)] max-w-[1280px] flex-col px-[24px]"
           >
             <div className="grid flex-1 items-center gap-[64px] py-[56px] md:grid-cols-2 md:py-[72px]">
@@ -417,7 +428,7 @@ export default function App() {
                 </span>
               </a>
             </div>
-          </motion.div>
+          </div>
         </section>
 
         {/* RESTANTE DAS SEÇÕES */}

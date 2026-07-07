@@ -1,5 +1,7 @@
 ﻿import { aboutTechnologies } from "./About";
 
+import { assetUrl } from "../lib/assets";
+
 const technologyDetails: Record<
   string,
   {
@@ -13,73 +15,73 @@ const technologyDetails: Record<
     label: "HTML",
     group: "Estrutura",
     accent: "from-brand-pink to-brand-purple",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    icon: assetUrl("imgs/tech/html5.svg"),
   },
   "Tailwind CSS": {
     label: "Tailwind CSS",
     group: "Estilização",
     accent: "from-[#AECFE0] to-[#A9C8AC]",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+    icon: assetUrl("imgs/tech/tailwindcss.svg"),
   },
   Javascript: {
     label: "JavaScript",
     group: "Interatividade",
     accent: "from-brand-green to-brand-pink",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    icon: assetUrl("imgs/tech/javascript.svg"),
   },
   Typescript: {
     label: "TypeScript",
     group: "Front-end",
     accent: "from-brand-blue to-brand-purple",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    icon: assetUrl("imgs/tech/typescript.svg"),
   },
   React: {
     label: "React",
     group: "Interface",
     accent: "from-[#AECFE0] to-brand-blue",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    icon: assetUrl("imgs/tech/react.svg"),
   },
   Java: {
     label: "Java",
     group: "Back-end",
     accent: "from-brand-purple to-brand-pink",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+    icon: assetUrl("imgs/tech/java.svg"),
   },
   PHP: {
     label: "PHP",
     group: "Back-end",
     accent: "from-[#C6B4E8] to-brand-blue",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
+    icon: assetUrl("imgs/tech/php.svg"),
   },
   C: {
     label: "C",
     group: "Back-end",
     accent: "from-brand-pink to-brand-green",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
+    icon: assetUrl("imgs/tech/c.svg"),
   },
   MySQL: {
     label: "MySQL",
     group: "Banco de dados",
     accent: "from-brand-blue to-[#A9C8AC]",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+    icon: assetUrl("imgs/tech/mysql.svg"),
   },
   Figma: {
     label: "Figma",
     group: "UI/UX Design",
     accent: "from-brand-pink to-[#AECFE0]",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+    icon: assetUrl("imgs/tech/figma.svg"),
   },
   Git: {
     label: "Git",
     group: "Versionamento",
     accent: "from-brand-green to-brand-purple",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+    icon: assetUrl("imgs/tech/git.svg"),
   },
   Photoshop: {
     label: "Photoshop",
     group: "Design",
     accent: "from-brand-blue to-[#AECFE0]",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg",
+    icon: assetUrl("imgs/tech/photoshop.svg"),
   },
 };
 

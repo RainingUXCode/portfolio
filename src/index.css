@@ -215,6 +215,14 @@
   }
 }
 
+.is-tab-hidden .global-aurora::before,
+.is-tab-hidden .animate-float,
+.is-tab-hidden .animate-blink,
+.is-tab-hidden .animate-scroll-cue,
+.is-tab-hidden .typewriter-text {
+  animation-play-state: paused !important;
+}
+
 @layer utilities {
   .perf-layer {
     backface-visibility: hidden;
