@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { assetUrl } from "../lib/assets";
 
 const projectsData = [
@@ -64,6 +64,32 @@ let activeProjectVideo: HTMLVideoElement | null = null;
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const cardRef = useRef<HTMLElement>(null);
+
+  // Começa a bufferizar o vídeo assim que o card entra na tela (scroll),
+  // em vez de esperar o hover. Assim, quando o mouse passa por cima,
+  // o vídeo já está pronto e toca instantaneamente.
+  useEffect(() => {
+    const video = videoRef.current;
+    const card = cardRef.current;
+    if (!project.video || !video || !card) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.preload = "auto";
+            video.load();
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: "200px" }
+    );
+
+    observer.observe(card);
+    return () => observer.disconnect();
+  }, [project.video]);
 
   const handleMouseEnter = () => {
     const video = videoRef.current;
@@ -93,6 +119,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
   return (
     <article
+      ref={cardRef}
       className="group relative flex h-full min-h-[392px] flex-col overflow-hidden rounded-[24px] border border-[rgba(198,180,232,0.28)] bg-[rgba(253,251,252,0.78)] shadow-[0_14px_38px_rgba(198,180,232,0.13),inset_0_1px_0_rgba(255,255,255,0.5)] backdrop-blur-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-[rgba(240,174,200,0.42)] hover:shadow-[0_18px_46px_rgba(198,180,232,0.20)] dark:border-[rgba(198,180,232,0.1)] dark:bg-dark-card dark:shadow-sm dark:hover:border-[rgba(198,180,232,0.3)]"
       data-aos="fade-up"
       data-aos-delay={120 + index * 70}
@@ -116,7 +143,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               data-project-preview
               muted
               playsInline
-              preload="metadata"
+              preload="none"
               poster={project.image}
               loop
               className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
