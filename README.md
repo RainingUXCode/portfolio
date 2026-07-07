@@ -1,75 +1,118 @@
-# React + TypeScript + Vite
+# Portfólio — Raínne Carvalho Lima
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web pessoal desenvolvida para apresentação profissional de trajetória, competências técnicas e projetos, voltada a processos seletivos para vagas de desenvolvimento Front-end e Full Stack.
 
-Currently, two official plugins are available:
+[![React](https://img.shields.io/badge/React-19-149eca?logo=react&logoColor=white)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Vite](https://img.shields.io/badge/Vite-8-646cff?logo=vite&logoColor=white)](https://vitejs.dev)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06b6d4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![License](https://img.shields.io/badge/license-personal--use-lightgrey)](#licença)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**[Acessar aplicação em produção →](#)**
 
-## React Compiler
+## Sumário
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [Visão geral](#visão-geral)
+- [Stack técnica](#stack-técnica)
+- [Arquitetura e estrutura de pastas](#arquitetura-e-estrutura-de-pastas)
+- [Como executar o projeto](#como-executar-o-projeto)
+- [Scripts disponíveis](#scripts-disponíveis)
+- [Sistema de tema](#sistema-de-tema)
+- [Deploy](#deploy)
+- [Autora](#autora)
 
-## Expanding the ESLint configuration
+## Visão geral
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+O projeto é uma single-page application dividida em seções semânticas independentes, cada uma implementada como um componente isolado:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+| Seção | Componente | Responsabilidade |
+|---|---|---|
+| Apresentação | `Hero` | Introdução, chamada para ação e indicação de disponibilidade |
+| Perfil | `About` | Trajetória profissional e áreas de atuação |
+| Stack | `Technologies` | Tecnologias em uso e em desenvolvimento |
+| Portfólio | `Projects` | Projetos com link de repositório e/ou demonstração |
+| Contato | `Contact` | Canais de contato e redes profissionais |
+| Rodapé | `Footer` | Identificação e informações complementares |
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Stack técnica
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Core**
+- React 19
+- TypeScript
+- Vite
 
-```
+**Estilização**
+- Tailwind CSS v4
+- Variáveis CSS customizadas (`color-mix()`) para theming claro/escuro
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Animação e interação**
+- Framer Motion (`motion`)
+- AOS (Animate On Scroll)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**Utilitários**
+- `clsx` — composição condicional de classes
+- `tailwind-merge` — resolução de conflitos de classes utilitárias
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Qualidade de código**
+- ESLint
+- typescript-eslint
+
+## Arquitetura e estrutura de pastas
 
 ```
+portfolio/
+├── public/                 # Assets estáticos servidos diretamente (favicon, ícones)
+├── src/
+│   ├── components/         # Componentes de seção (Hero, About, Technologies, Projects, Contact, Footer)
+│   ├── App.tsx              # Composição raiz das seções
+│   ├── index.css             # Estilos globais, tokens de design e temas claro/escuro
+│   ├── tailwind.config.js
+│   └── main.tsx
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
+```
+
+## Como executar o projeto
+
+**Requisitos:** Node.js 18 ou superior e npm.
+
+```bash
+# Clonar o repositório
+git clone https://github.com/RainingUXCode/portfolio.git
+cd portfolio
+
+# Instalar dependências
+npm install
+
+# Executar em ambiente de desenvolvimento
+npm run dev
+```
+
+A aplicação fica disponível em `http://localhost:5173` por padrão.
+
+## Scripts disponíveis
+
+| Comando | Descrição |
+|---|---|
+| `npm run dev` | Inicia o servidor de desenvolvimento com hot reload |
+| `npm run build` | Compila TypeScript (`tsc -b`) e gera o build de produção |
+| `npm run preview` | Serve localmente o build de produção para verificação |
+| `npm run lint` | Executa a checagem de lint em todo o projeto |
+
+## Sistema de tema
+
+A paleta de cores segue a identidade visual **Verão Claro (Light Summer)** — tons frios e suaves (rosa, lavanda, azul acinzentado e verde sálvia). As cores-base são definidas como variáveis CSS e combinadas via `color-mix()`, o que permite derivar automaticamente todos os estados visuais (hover, bordas, superfícies) tanto no modo claro quanto no escuro, sem duplicar a paleta manualmente.
+
+## Deploy
+
+A aplicação é publicada via **Vercel**. O build de produção é gerado a partir do script `build`, descrito acima.
+
+## Autora
+
+**Raínne Carvalho Lima**
+Desenvolvedora de Software · Análise e Desenvolvimento de Sistemas (UNIPÊ)
+
+- GitHub: [github.com/RainingUXCode](https://github.com/RainingUXCode)
+- LinkedIn: [linkedin.com/in/raínne-carvalho-lima-87923b236](https://linkedin.com/in/ra%C3%ADnne-carvalho-lima-87923b236)
+- Behance: [behance.net/rainingdesign](https://behance.net/rainingdesign)
