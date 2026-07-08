@@ -1,4 +1,4 @@
-# 🌸 Portfólio — Raínne Carvalho Lima
+<h1 align="center">🌸 Portfólio — Raínne Carvalho Lima</h1>
 
 <p align="center">
   <strong>Front-end Developer • UI/UX Designer • Software Developer</strong>
@@ -10,17 +10,23 @@
 
 <p align="center">
   <a href="https://portfolio-raininguxcode.vercel.app">
-    <img src="https://img.shields.io/badge/🌐_Visitar_Portfólio-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">
+    <img src="https://img.shields.io/badge/🌐_Visitar_Portfólio-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Visitar Portfólio">
   </a>
 </p>
 
 <p align="center">
-
-[![React](https://img.shields.io/badge/React-19-149eca?logo=react&logoColor=white)](https://react.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
-[![Vite](https://img.shields.io/badge/Vite-8-646cff?logo=vite&logoColor=white)](https://vite.dev)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06b6d4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
-
+  <a href="https://react.dev">
+    <img src="https://img.shields.io/badge/React-19-149eca?logo=react&logoColor=white" alt="React">
+  </a>
+  <a href="https://www.typescriptlang.org">
+    <img src="https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white" alt="TypeScript">
+  </a>
+  <a href="https://vite.dev">
+    <img src="https://img.shields.io/badge/Vite-8-646cff?logo=vite&logoColor=white" alt="Vite">
+  </a>
+  <a href="https://tailwindcss.com">
+    <img src="https://img.shields.io/badge/Tailwind_CSS-4-06b6d4?logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
+  </a>
 </p>
 
 ---
