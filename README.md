@@ -83,6 +83,7 @@ cd portfolio
 npm install
 npm run dev
 ```
+<<<<<<< HEAD
 
 O servidor local ficará disponível em:
 
@@ -130,4 +131,61 @@ Desenvolvedora Front-end com base em Design e UX/UI, em evolução para Full Sta
 
 - GitHub: [github.com/RainingUXCode](https://github.com/RainingUXCode)
 - LinkedIn: [linkedin.com/in/ra%C3%ADnne-carvalho-lima-87923b236](https://www.linkedin.com/in/ra%C3%ADnne-carvalho-lima-87923b236)
+=======
+portfolio/
+├── public/                 # Assets estáticos servidos diretamente (favicon, ícones)
+├── src/
+│   ├── components/         # Componentes de seção (Hero, About, Technologies, Projects, Contact, Footer)
+│   ├── App.tsx              # Composição raiz das seções
+│   ├── index.css             # Estilos globais, tokens de design e temas claro/escuro
+│   ├── tailwind.config.js
+│   └── main.tsx
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
+```
+
+## Como executar o projeto
+
+**Requisitos:** Node.js 18 ou superior e npm.
+
+```bash
+# Clonar o repositório
+git clone https://github.com/RainingUXCode/portfolio.git
+cd portfolio
+
+# Instalar dependências
+npm install
+
+# Executar em ambiente de desenvolvimento
+npm run dev
+```
+
+A aplicação fica disponível em `http://localhost:5173` por padrão.
+
+## Scripts disponíveis
+
+| Comando | Descrição |
+|---|---|
+| `npm run dev` | Inicia o servidor de desenvolvimento com hot reload |
+| `npm run build` | Compila TypeScript (`tsc -b`) e gera o build de produção |
+| `npm run preview` | Serve localmente o build de produção para verificação |
+| `npm run lint` | Executa a checagem de lint em todo o projeto |
+
+## Sistema de tema
+
+A paleta de cores segue a identidade visual **Verão Claro (Light Summer)** — tons frios e suaves (rosa, lavanda, azul acinzentado e verde sálvia). As cores-base são definidas como variáveis CSS e combinadas via `color-mix()`, o que permite derivar automaticamente todos os estados visuais (hover, bordas, superfícies) tanto no modo claro quanto no escuro, sem duplicar a paleta manualmente.
+
+## Deploy
+
+A aplicação é publicada via **Vercel**. O build de produção é gerado a partir do script `build`, descrito acima.
+
+## Autora
+
+**Raínne Carvalho Lima**
+Desenvolvedora de Software · Análise e Desenvolvimento de Sistemas (UNIPÊ)
+
+- GitHub: [github.com/RainingUXCode](https://github.com/RainingUXCode)
+- LinkedIn: [linkedin.com/in/raínne-carvalho-lima-87923b236](https://linkedin.com/in/ra%C3%ADnne-carvalho-lima-87923b236)
+>>>>>>> 185b71f4e446486865e88d495362bef3c60f1399
 - Behance: [behance.net/rainingdesign](https://behance.net/rainingdesign)
